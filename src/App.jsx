@@ -9,7 +9,7 @@ import * as K from './screens/Calm'
 // Links shown beside the phone on desktop — edit these for your portfolio.
 const LINKS = {
   figma: 'https://www.figma.com/proto/jzCqAWExPS6Uxzjm3PvioO/DMD3035_SocialAnxietyAPP_Design?node-id=952-23465&starting-point-node-id=952%3A23465',
-  github: '', // e.g. https://github.com/<you>/relate-app
+  github: 'https://github.com/zhiyudesign/relate-app',
 }
 
 const JUMP = [

@@ -4,7 +4,7 @@
 
 Relate is a mobile app concept that helps people with social anxiety prepare for real conversations. It includes a personalized chatbot, a mood and journal tracker, and guided calming techniques. This repo is a working, clickable version of my high-fidelity Figma prototype, coded so anyone can try the experience in a browser.
 
-**[▶ Try the live demo](https://YOUR-USERNAME.github.io/YOUR-REPO/)** · [View the Figma prototype](https://www.figma.com/proto/jzCqAWExPS6Uxzjm3PvioO/DMD3035_SocialAnxietyAPP_Design?node-id=952-23465&starting-point-node-id=952%3A23465)
+**[▶ Try the live demo](https://zhiyudesign.github.io/relate-app/)** · [View the Figma prototype](https://www.figma.com/proto/jzCqAWExPS6Uxzjm3PvioO/DMD3035_SocialAnxietyAPP_Design?node-id=952-23465&starting-point-node-id=952%3A23465)
 
 ![Relate running in the browser](docs/preview.png)
 
