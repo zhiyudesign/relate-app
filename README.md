@@ -19,6 +19,8 @@ On a computer the app appears inside a phone frame with shortcuts to each flow. 
 | **Chatbot** | Choose a goal and persona, then chat. Replies are scripted from the prototype, with typing indicators and suggested replies. Summarize the chat and save it to your journal |
 | **Journal & mood** | Mood analytics, journal entries you can add, edit, and delete, emoji mood check-ins, and CSV export |
 | **Calm** | Five breathing exercises with a live animated timer, and seven yoga poses |
+| **AR/VR mock practice** | Pick a lecture or public space and one of seven campus rooms, then practice in a draggable 360° room. The phone turns to landscape, a chatbot gives speaking feedback, and you can load a script |
+| **Settings** | Account, AI on/off (pauses the chatbot and AR/VR), working dark mode, high-contrast and larger-text modes, notification toggles, a support form, crisis hotlines, AI disclosure, and privacy policy |
 
 Everything you enter is stored only in your own browser (localStorage). Use **Reset demo** to start over.
 
@@ -48,10 +50,8 @@ Pushing to `main` builds the site and publishes it to GitHub Pages through `.git
 ```
 src/
   components/   shared UI (buttons, inputs, tab bar, mood meter, icons)
-  screens/      Onboarding, Chatbot, Journal, Calm
+  screens/      Onboarding, Chatbot, Journal, Calm, ARVR, Settings
   state.jsx     demo data + localStorage persistence
   index.css     design tokens and styles
 public/img/     icons and illustrations exported from Figma
 ```
-
-Not yet coded: the AR/VR mock-practice flow and the Settings screens. Both tabs currently show a "coming soon" page.

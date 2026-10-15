@@ -5,6 +5,18 @@ const KEY = 'relate-demo-v2'
 const SEED = {
   email: '',
   name: 'Levi',
+  fullName: 'Levi Manwell',
+  accountEmail: 'levimanwell34@gmail.com',
+  settings: {
+    darkMode: false,
+    highContrast: false,
+    largerText: false,
+    checkIn: true,
+    journaling: false,
+    mindfulness: false,
+    positivity: true,
+    ai: true,
+  },
   survey: { q1: 60, q2: 60, q3: 60, q4: [], q5: [] },
   goal: 'Learn conversation starters.',
   persona: 'Warm and friendly.',
@@ -53,7 +65,9 @@ function daysAgo(n) {
 function load() {
   try {
     const raw = localStorage.getItem(KEY)
-    return raw ? { ...SEED, ...JSON.parse(raw) } : SEED
+    if (!raw) return SEED
+    const saved = JSON.parse(raw)
+    return { ...SEED, ...saved, settings: { ...SEED.settings, ...saved.settings } }
   } catch {
     return SEED
   }

@@ -1,10 +1,11 @@
 import { Routes, Route, Navigate, useNavigate, useLocation, useParams } from 'react-router-dom'
-import { Screen, Button, Logo } from './components/ui'
 import { useAppState } from './state'
 import * as O from './screens/Onboarding'
 import * as C from './screens/Chatbot'
 import * as J from './screens/Journal'
 import * as K from './screens/Calm'
+import * as A from './screens/ARVR'
+import * as S from './screens/Settings'
 
 // Links shown beside the phone on desktop — edit these for your portfolio.
 const LINKS = {
@@ -18,11 +19,16 @@ const JUMP = [
   ['Chatbot', '/chat'],
   ['Journal', '/journal'],
   ['Calm', '/calm'],
+  ['AR/VR', '/arvr'],
+  ['Settings', '/settings'],
 ]
 
 function Showcase({ children }) {
   const navigate = useNavigate()
-  const { reset } = useAppState()
+  const { state, reset } = useAppState()
+  const { pathname } = useLocation()
+  const landscape = pathname === '/arvr/vr' || pathname === '/arvr/ar'
+  const s = state.settings
   return (
     <div className="showcase">
       <aside className="showcase__info">
@@ -64,30 +70,13 @@ function Showcase({ children }) {
           </button>
         </div>
       </aside>
-      <div className="phone">
-        <div className="phone__screen">
+      <div className={`phone ${landscape ? 'phone--landscape' : ''}`}>
+        <div className="phone__screen" data-dark={s.darkMode} data-contrast={s.highContrast} data-large={s.largerText}>
           <span className="phone__island" />
           {children}
         </div>
       </div>
     </div>
-  )
-}
-
-/** AR/VR and Settings aren't part of this first build. */
-function ComingSoon({ tab, title }) {
-  const navigate = useNavigate()
-  return (
-    <Screen tabs={tab}>
-      <h1 className="h1" style={{ marginTop: 16 }}>
-        {title}
-      </h1>
-      <div className="stack stack--center" style={{ marginTop: 80 }}>
-        <Logo size={160} />
-        <p className="body">This section is coming soon to the coded prototype.</p>
-        <Button onClick={() => navigate('/chat')}>Back to Chatbot</Button>
-      </div>
-    </Screen>
   )
 }
 
@@ -137,9 +126,23 @@ export default function App() {
         <Route path="/calm/yoga" element={<K.YogaList />} />
         <Route path="/calm/yoga/:id" element={<K.YogaDetail />} />
 
-        {/* Not built yet */}
-        <Route path="/arvr" element={<ComingSoon tab="arvr" title="Mock Practice" />} />
-        <Route path="/settings" element={<ComingSoon tab="settings" title="Settings" />} />
+        {/* AR / VR mock practice */}
+        <Route path="/arvr" element={<A.PracticeLanding />} />
+        <Route path="/arvr/environment" element={<A.SelectEnvironment />} />
+        <Route path="/arvr/device" element={<A.SelectDevice />} />
+        <Route path="/arvr/vr" element={<A.VRSimulation />} />
+        <Route path="/arvr/ar" element={<A.ARSimulation />} />
+
+        {/* Settings */}
+        <Route path="/settings" element={<S.SettingsHome />} />
+        <Route path="/settings/account" element={<S.Account />} />
+        <Route path="/settings/ai" element={<S.AIFunctionality />} />
+        <Route path="/settings/accessibility" element={<S.Accessibility />} />
+        <Route path="/settings/notifications" element={<S.Notifications />} />
+        <Route path="/settings/support" element={<S.Support />} />
+        <Route path="/settings/resources" element={<S.Resources />} />
+        <Route path="/settings/ai-disclosure" element={<S.AIDisclosure />} />
+        <Route path="/settings/privacy" element={<S.Privacy />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

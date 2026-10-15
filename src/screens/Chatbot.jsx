@@ -174,6 +174,27 @@ function timeNow() {
 }
 
 export function ChatConversation() {
+  const { state } = useAppState()
+  if (!state.settings.ai) return <ChatAIOff />
+  return <Conversation />
+}
+
+function ChatAIOff() {
+  const navigate = useNavigate()
+  return (
+    <Screen tabs="chatbot">
+      <Header />
+      <div className="stack stack--center" style={{ marginTop: 80 }}>
+        <Logo size={160} variant="logo-sm.svg" />
+        <h2 className="h2">AI features are turned off</h2>
+        <p className="body">The chatbot is paused. Journaling, mood tracking, and calming techniques still work.</p>
+        <Button onClick={() => navigate('/settings/ai')}>Open AI Settings</Button>
+      </div>
+    </Screen>
+  )
+}
+
+function Conversation() {
   const navigate = useNavigate()
   const { state } = useAppState()
   const [messages, setMessages] = useState(() => [
